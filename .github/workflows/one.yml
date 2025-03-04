@@ -1,0 +1,27 @@
+name: hello actions
+
+
+on:
+ push:
+   branches:
+     - main
+
+
+jobs:
+ build:
+   runs-on: ubuntu-latest
+
+
+   steps:
+     - uses: actions/checkout@v2
+     - name: Job1
+       run: echo Hello, world1!
+ deploy:
+   runs-on: ubuntu-latest
+   needs: build
+
+
+   steps:
+     - uses: actions/checkout@v2
+     - name: Job2
+       run: echo Hello, world2!
